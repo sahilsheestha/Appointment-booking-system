@@ -41,7 +41,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => Login()),
+        MaterialPageRoute(builder: (context) => const Login()),
       );
     }
   }
@@ -51,6 +51,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return Scaffold(
       body: Stack(
         children: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF1E3C72),
+                  Color(0xFF2A5298),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+            ),
+          ),
           PageView.builder(
             controller: _pageController,
             onPageChanged: (index) {
@@ -71,8 +83,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   Text(
                     _onboardingData[index]["title"]!,
                     style: const TextStyle(
-                      fontSize: 24,
+                      fontSize: 26,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -81,7 +94,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 30),
                     child: Text(
                       _onboardingData[index]["description"]!,
-                      style: const TextStyle(fontSize: 16, color: Colors.grey),
+                      style: const TextStyle(
+                        fontSize: 16,
+                        color: Colors.white70,
+                      ),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -105,8 +121,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       height: 10,
                       width: _currentPage == index ? 20 : 10,
                       decoration: BoxDecoration(
-                        color:
-                            _currentPage == index ? Colors.blue : Colors.grey,
+                        color: _currentPage == index
+                            ? const Color(0xFF0ACF83)
+                            : Colors.white,
                         borderRadius: BorderRadius.circular(5),
                       ),
                     ),
@@ -116,14 +133,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 ElevatedButton(
                   onPressed: _nextPage,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                    backgroundColor: const Color(0xFF0ACF83),
                     padding: const EdgeInsets.symmetric(
                         horizontal: 50, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 5,
                   ),
                   child: Text(
                     _currentPage == _onboardingData.length - 1
                         ? "Get Started"
                         : "Next",
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
                   ),
                 ),
               ],

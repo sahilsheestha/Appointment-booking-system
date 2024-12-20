@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       theme: getApplicationTheme(),
       routes: {
-        "/": (context) => SplashScreen(),
+        "/": (context) => const SplashScreen(),
       },
     );
   }
