@@ -1,4 +1,5 @@
-import 'package:appointmennt_booking_system/view/onboardingscreen.dart';
+import 'package:appointmennt_booking_system/core/app_theme/theme_data.dart';
+import 'package:appointmennt_booking_system/view/splashscreeen.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -6,8 +7,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: OnboardingScreen(),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: "/",
+      theme: getApplicationTheme(),
+      routes: {
+        "/": (context) => SplashScreen(),
+      },
     );
   }
 }
